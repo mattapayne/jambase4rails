@@ -18,6 +18,7 @@ module JamBase4Rails
       private
       
       def jambase_search(search_args)
+	check_api_key
         return if search_args.blank?
         replace_aliased_keys!(search_args)
         remove_unnecessary_params!(search_args)
@@ -25,6 +26,12 @@ module JamBase4Rails
         return JamBase4Rails::Response.fake_response if fake_jambase_calls
         result = jambase_gateway.get(create_query_string(search_args))
         return JamBase4Rails::Response.new(result.code, result.message, result.body)
+      end
+
+      def check_api_key
+        if jambase_api_key.blank?
+	  raise ArgumentError.new("No JamBase API key configured. Please add a configuration to #{RAILS_ENV}.rb")
+        end
       end
       
       def replace_aliased_keys!(options)
