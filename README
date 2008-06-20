@@ -20,6 +20,8 @@ Installation
 1) get and install the plugin
     git: script/plugin install git://github.com/mattapayne/jambase4rails.git
     svn: script/plugin install http://jambase4rails.googlecode.com/svn/trunk/
+            -or-
+         script/plugin install http://jambase4rails.googlecode.com/svn/tags/release-1.0/
 
 2) run the jambase4rails:install_assets rake task - this ensures that the images
    required by the helpers are in place.
