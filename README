@@ -1,0 +1,77 @@
+JamBase4Rails
+=============
+
+JamBase4Rails is a Ruby on Rails plugin that provides access to the JamBase API
+http://developer.jambase.com/docs
+
+Provide concert infomation and search functionality to users of your Ruby on Rails
+application.
+
+**Note: JamBase requires that any site making use of it's API provide attribution.
+See http://developer.jambase.com/docs for more information. This plugin provides 
+helpers to make adding attribution to your site easy.
+
+This plugin adds helper methods to your views, but does not alter controllers or
+models in any way.
+
+Configuration
+=============
+
+Using the JamBase API requires that you register for an API key. Get one here:
+http://developer.jambase.com/member/register
+
+In the configuration file for your environment, add the following configuration:
+
+#development.rb
+
+JamBase4Rails.configure do |settings|
+  settings.api_key = "XXXXXXXXXXXXX"
+  settings.fake_calls = false (optional - defaults to false. If true, this just
+                               returns static data and does not call the JamBase
+                               API)
+end
+
+Example
+=======
+
+To make use of JamBase4Rails just use the JamBase4Rails::API object.
+(or include JamBase4Rails in your model or controller and just call API)
+
+Available methods (all are class methods):
+
+All methods return an instance of JamBase4Rails::Events
+
+1) JamBase4Rails::API.search(options)
+2) JamBase4Rails::API.search_by_artist(artist_name, additional_options={})
+3) JamBase4Rails::API.search_by_zipcode(zipcode, additional_options={})
+
+Possible options:
+
+:band (or :artist (an alias for :band)) => The name of the band to search for.
+:zip => The zipcode to search within
+:radius => The distance from the zipcode to include in the search
+
+ie: JamBase4Rails::API.search(:band => "A Band", :zip => "90210", :radius => 20)
+    JamBase4Rails::API.search_by_band("A Band", {:zip => "90210"})
+    JamBase4Rails::API.search_by_zipcode("90210")
+
+The general schema of the results is:
+
+Events (an array-like object)
+    - name (may or may not be nil) (String)
+    - Event(s) (Event)
+        - event_id (String)
+        - event_date (String)
+        - event_url (String)
+        - venue (Venue)
+            - venue_id (String)
+            - venue_name (String)
+            - venue_city (String)
+            - venue_state (String)
+            - venue_zip (String)
+        - artists (Artists)
+            - Artist(s) (Artist)
+                - artist_id
+                - artist_name
+
+Copyright (c) 2008 [Matt Payne], released under the MIT license
