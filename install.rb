@@ -1,4 +1,4 @@
-asset_dir = File.join(File.dirname(__FILE_), "assets")
+asset_dir = File.join(File.dirname(__FILE__), "assets")
 rails_image_dir = File.join(RAILS_ROOT, "public", "images")
 
 Dir[asset_dir].each do |file|
