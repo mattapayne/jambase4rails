@@ -12,7 +12,7 @@ module JamBase4Rails
     #would do anything useful ;)
     def self.search(search_options={})
       result = jambase_search(search_options)
-      return Events.new(convert(result.body), result.body)
+      return Events.new(convert(result.body), result.body) unless result.blank?
     end
     
     #Additional Filters - As above, but without :artist/band

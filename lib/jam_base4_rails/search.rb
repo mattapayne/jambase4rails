@@ -18,8 +18,9 @@ module JamBase4Rails
       private
       
       def jambase_search(search_args)
-	check_api_key
+	    check_api_key
         return if search_args.blank?
+        search_args = search_args.symbolize_keys
         replace_aliased_keys!(search_args)
         remove_unnecessary_params!(search_args)
         return if search_args.blank?

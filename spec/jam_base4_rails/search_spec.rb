@@ -25,38 +25,6 @@ describe JamBase4Rails::Search do
     self.send(:jambase_search, {}).should be_nil
   end
   
-  it "should replace all aliased keys in search args" do
-    search_args = default_search_args
-    self.send(:jambase_search, search_args)
-    search_args.should_not be_key(:artist)
-    search_args.should be_key(:band)
-  end
-  
-  it "should not mess with non-aliased keys in search args" do
-    search_args = default_search_args
-    self.send(:jambase_search, search_args)
-    search_args.should be_key(:radius)
-    search_args.should be_key(:zip)
-  end
-  
-  it "should remove all params in the search args that are not supported by the API" do
-    search_args = default_search_args.merge(:test1 => "blag", :test2 => "mojo")
-    self.send(:jambase_search, search_args)
-    search_args.should be_key(:radius)
-    search_args.should be_key(:zip)
-    search_args.should be_key(:band)
-    search_args.should_not be_key(:test1)
-    search_args.should_not be_key(:test2)
-  end
-  
-  it "should remove any params that do not have a value" do
-    search_args = default_search_args.merge(:zip => nil, :radius => "")
-    self.send(:jambase_search, search_args)
-    search_args.should_not be_key(:radius)
-    search_args.should_not be_key(:zip)
-    search_args.should be_key(:band)
-  end
-  
   it "should return nil if after cleaning the search args they are empty" do
     search_args = default_search_args.merge(
       :zip => nil, :radius => "", :artist => "")
@@ -82,4 +50,5 @@ describe JamBase4Rails::Search do
         :zip => nil, :radius => nil))
     result.should be_is_a(JamBase4Rails::Response)
   end
+  
 end
