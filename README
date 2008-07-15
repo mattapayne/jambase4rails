@@ -62,7 +62,7 @@ Possible options:
 :radius => The distance from the zipcode to include in the search
 
 ie: JamBase4Rails::API.search(:band => "A Band", :zip => "90210", :radius => 20)
-    JamBase4Rails::API.search_by_band("A Band", {:zip => "90210"})
+    JamBase4Rails::API.search_by_artist("A Band", {:zip => "90210"})
     JamBase4Rails::API.search_by_zipcode("90210")
 
 The general schema of the results is:
