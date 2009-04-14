@@ -18,7 +18,7 @@ module JamBase4Rails
       private
       
       def jambase_search(search_args)
-	    check_api_key
+	      check_api_key
         return if search_args.blank?
         search_args = search_args.symbolize_keys
         replace_aliased_keys!(search_args)
@@ -31,7 +31,7 @@ module JamBase4Rails
 
       def check_api_key
         if jambase_api_key.blank?
-	  raise ArgumentError.new("No JamBase API key configured. Please add a configuration to #{RAILS_ENV}.rb")
+	        raise ArgumentError.new("No JamBase API key configured. Please add a configuration to #{Rails.env}.rb")
         end
       end
       

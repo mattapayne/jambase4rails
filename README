@@ -1,25 +1,26 @@
 JamBase4Rails
 =============
 
-JamBase4Rails is a Ruby on Rails plugin that provides access to the JamBase API
+*** PLEASE NOTE THAT THIS PLUGIN IS SLATED FOR DEPRECATION! NEW USERS PLEASE SEE JamBase4R (http://github.com/mattapayne/jambase4r/tree).
+JamBase4R is supplied as a gem and is framework agnostic. It will work just fine with Rails 2.3 and up. ***
+
+JamBase4Rails is a Ruby gem that provides access to the JamBase API
 http://developer.jambase.com/docs
 
-Provide concert infomation and search functionality to users of your Ruby on Rails
-application.
+Provide concert information and search functionality to users of your application.
 
 **Note: JamBase requires that any site making use of it's API provide attribution.
-See http://developer.jambase.com/docs for more information. This plugin provides 
+See http://developer.jambase.com/docs for more information. This gem provides 
 helpers to make adding attribution to your site easy.
 
-This plugin adds helper methods to your views, but does not alter controllers or
+This gem adds helper methods to your views, but does not alter controllers or
 models in any way.
 
 Installation
 ============
 
-1) get and install the plugin
+1) get and install the gem
     git: script/plugin install git://github.com/mattapayne/jambase4rails.git
-    svn: script/plugin install http://jambase4rails.googlecode.com/svn/trunk/plugins/jambase4Rails
 
 2) run the jambase4rails:install_assets rake task - this ensures that the images
    required by the helpers are in place.

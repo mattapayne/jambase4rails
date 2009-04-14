@@ -27,7 +27,7 @@ end
 
 def iterate_assets(&block)
  
-  rails_image_dir = File.join(RAILS_ROOT, "public", "images")
+  rails_image_dir = File.join(Rails.root, "public", "images")
   asset_dir = File.expand_path(File.join(File.dirname(__FILE__), "/../", "assets"))
     
   FileUtils.cd(asset_dir) do
